@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Năm Bên Nhau</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff1493; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff1493; }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .countdown {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .time-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .time-unit {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+        }
+
+        .time-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .love-letter {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 700px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 2s ease;
+            line-height: 1.8;
+        }
+
+        .love-letter h2 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .love-letter p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .photo-frame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.4);
+            animation: fadeIn 2s ease;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .photo-frame p {
+            font-size: 1.2em;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 24px;
+            animation: fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.2em;
+            animation: fadeIn 3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>3 Năm Bên Em</h1>
+            <p class="subtitle">Ngày đặc biệt</p>
+        </header>
+
+        <div class="countdown">
+            <h2 style="text-align: center; font-size: 2em; margin-bottom: 20px;">Chúng ta đã yêu nhau được</h2>
+            <div class="time-display">
+                <div class="time-unit"><span class="time-number" id="years">0</span><span class="time-label">Năm</span></div>
+                <div class="time-unit"><span class="time-number" id="days">0</span><span class="time-label">Ngày</span></div>
+                <div class="time-unit"><span class="time-number" id="hours">0</span><span class="time-label">Giờ</span></div>
+                <div class="time-unit"><span class="time-number" id="minutes">0</span><span class="time-label">Phút</span></div>
+                <div class="time-unit"><span class="time-number" id="seconds">0</span><span class="time-label">Giây</span></div>
+            </div>
+        </div>
+
+        <div class="love-letter">
+            <h2>💌 Gửi Em Yêu Của Anh</h2>
+            <p>Mình đã quen nhau được ba năm rồi ha. Ba năm không quá dài, nhưng cũng đủ để anh hiểu và trân trọng những gì hai đứa đã cùng trải qua.</p>
+            <p>Giờ xa nhau một chút, anh mới thấy rõ là tình cảm không nằm ở khoảng cách, mà ở chỗ mình vẫn nghĩ về nhau theo cách yên bình nhất.</p>
+            <p>Anh không biết mình sẽ đi chung với nhau được bao lâu, nhưng anh biết là mình thật lòng. Anh tin em sẽ làm tốt mọi thứ ở nơi em đang theo đuổi</p>
+            <p>Anh chúc cục dàng học thật giỏi, gặp nhiều may mắn và thành công trên con đường em chọn. Dù ở đâu, anh vẫn mong em luôn bình yên và vui với cuộc sống của mình.</p>
+            <p style="text-align: right; font-style: italic; margin-top: 30px;">Yêu em ❤️</p>
+        </div>
+
+        <div class="photo-frame">
+            <img src="images/image.jpg" alt="Hun em:3">
+            <p>Hun em:3</p>
+        </div>
+
+        <footer>
+            <p style="font-size: 1.5em; margin-bottom: 10px;">Chúc mừng kỷ niệm 3 năm yêu nhau!</p>
+            <p>❤️Yêu cục dàng nhiều lắm❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        const startDate = new Date('2022-10-30T00:00:00');
+        function updateCountdown() {
+            const now = new Date();
+            const diff = now - startDate;
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('years').textContent = years;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 300);
+        for(let i = 0; i < 10; i++) setTimeout(createHeart, i * 300);
+    </script>
+</body>
+</html>
